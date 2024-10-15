@@ -17,6 +17,9 @@ class CustomText2 extends StatelessWidget {
     this.textStyle,
   }) : super(key: key);
 
+  /// The text to display.
+  /// with row and flexible
+
   String text;
   final FontType fontType;
   final FontWeight? weight;

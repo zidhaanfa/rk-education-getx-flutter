@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/theme/my_theme.dart';
 import '../config/config.dart';
 import 'Custom_text.dart';
 
@@ -10,87 +11,110 @@ class CustomCard1 extends StatelessWidget {
   CustomCard1({
     Key? key,
     required this.title,
-    required this.items,
+    this.bottomWidget,
+    required this.time,
+    required this.part,
   }) : super(key: key);
 
   String title;
-  List<CustomCard1Item> items;
+  Widget? bottomWidget;
+  String time;
+  String part;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
-          child: Row(
-            children: [
-              Flexible(
+    return Padding(
+      padding: const EdgeInsets.only(
+        right: 12.0,
+        left: 12.0,
+      ),
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+          side: BorderSide(
+            color: MyTheme.theme.dividerColor,
+            width: 1,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: MyTheme.theme.colorScheme.primary.withOpacity(0.5),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(8.r),
+                  ),
+                ),
                 child: CustomText(
-                  text: title,
-                  fontType: FontType.titleMedium,
-                  textAlign: TextAlign.left,
-                  weight: FontWeight.bold,
+                  text: '$part',
+                  fontType: FontType.titleSmall,
+                  colorText: Colors.white,
                 ),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0, left: 8.0, bottom: 5),
-          child: Column(
-            children: items,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CustomCard1Item extends StatelessWidget {
-  CustomCard1Item({
-    Key? key,
-    required this.title,
-    this.subtitle,
-    this.icon,
-    this.trailing,
-    this.onTap,
-    this.cardColor,
-    this.titleColor,
-    this.subtitleColor,
-  }) : super(key: key);
-
-  IconData? icon;
-  String title;
-  String? subtitle;
-
-  Color? titleColor;
-  Color? subtitleColor;
-  Function()? onTap;
-  Widget? trailing;
-  Color? cardColor;
-  double? elevation;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(22),
-      onTap: onTap,
-      child: Card(
-        elevation: elevation ?? 1,
-        color: cardColor,
-        child: ListTile(
-          leading: icon != null ? Icon(icon) : null,
-          title: CustomText(
-            text: title,
-            fontType: FontType.bodyLarge,
-            colorText: titleColor,
-          ),
-          subtitle: subtitle != null
-              ? CustomText(
-                  text: subtitle ?? '',
-                  fontType: FontType.bodySmall,
-                  colorText: subtitleColor,
-                )
-              : null,
-          trailing: trailing != null ? trailing : Icon(Icons.arrow_forward_ios),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 5),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            'assets/images/person1.png',
+                            width: 0.25.sw,
+                            height: 0.1.sh,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 5),
+                        child: Container(
+                          width: 0.5.sw,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomText(
+                                text: title,
+                                fontType: FontType.titleMedium,
+                                weight: FontWeight.bold,
+                              ),
+                              Row(
+                                children: [
+                                  //icon timer and text
+                                  Icon(
+                                    Icons.timer,
+                                    color: MyTheme.theme.colorScheme.primary,
+                                    size: 20,
+                                  ),
+                                  CustomText(
+                                    text: time,
+                                    fontType: FontType.bodyMedium,
+                                    weight: FontWeight.normal,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  bottomWidget ?? Container(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

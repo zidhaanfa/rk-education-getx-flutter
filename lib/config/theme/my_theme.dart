@@ -11,7 +11,7 @@ class MyTheme {
   static final theme = Theme.of(Get.context!);
 
   static ThemeData light = FlexThemeData.light(
-    scheme: FlexScheme.blueWhale,
+    scheme: FlexScheme.amber,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 7,
     subThemesData: const FlexSubThemesData(
@@ -33,7 +33,7 @@ class MyTheme {
   );
 
   static ThemeData dark = FlexThemeData.dark(
-    colors: FlexColor.schemes[FlexScheme.blueWhale]!.light.defaultError
+    colors: FlexColor.schemes[FlexScheme.shark]!.light.defaultError
         .toDark(16, false),
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 13,

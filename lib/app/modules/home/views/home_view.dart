@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/components/config/config.dart';
-import 'package:getx_skeleton/app/components/widget/Custom_elevatedButton.dart';
-import 'package:getx_skeleton/app/components/widget/Custom_text.dart';
-import 'package:getx_skeleton/app/components/widget/Custom_text2.dart';
-
-import '../../../../config/theme/my_theme.dart';
 import '../../../components/widget/Custom_appBar.dart';
 import '../../../components/widget/Custom_carousel.dart';
 import '../controllers/home_controller.dart';
@@ -44,8 +38,7 @@ class HomeView extends GetView<HomeController> {
                     height: 120,
                     itemWidth: MediaQuery.of(Get.context!).size.width / 1.005,
                   ),
-
-                  // ----------------------- Progress ----------------------- //
+                  10.verticalSpace,
 
                   // ----------------------- New Course ----------------------- //
                   CardNewCourse(),

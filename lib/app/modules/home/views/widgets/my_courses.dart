@@ -5,7 +5,7 @@ import 'package:getx_skeleton/config/theme/my_theme.dart';
 import '../../../../components/config/config.dart';
 import '../../../../components/widget/Custom_text.dart';
 import '../../../../components/widget/Custom_textButton.dart';
-import 'atom/course_item.dart';
+import 'atom/course_home_item.dart';
 
 class MyCourses extends StatelessWidget {
   const MyCourses({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class MyCourses extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return CourseItem();
+            return CourseHomeItem();
           },
         )
       ],

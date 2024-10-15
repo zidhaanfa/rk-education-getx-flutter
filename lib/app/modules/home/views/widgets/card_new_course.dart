@@ -15,13 +15,13 @@ class CardNewCourse extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Card(
-        color: MyTheme.theme.colorScheme.primary,
+        color: MyTheme.theme.primaryColor,
         child: Stack(
           children: [
             //----------------white circles decor----------------//
             Positioned(
               right: 0,
-              top: -125.h,
+              top: -100.h,
               child: CircleAvatar(
                 backgroundColor:
                     MyTheme.theme.secondaryHeaderColor.withOpacity(0.05),
@@ -89,8 +89,8 @@ class CardNewCourse extends StatelessWidget {
                               width: 100,
                               fontType: FontType.bodySmall,
                               colorText: MyTheme
-                                  .theme.buttonTheme.colorScheme!.onSecondary,
-                              color: MyTheme.theme.colorScheme.secondary,
+                                  .theme.buttonTheme.colorScheme!.primary,
+                              color: MyTheme.theme.colorScheme.onPrimary,
                               isText: true,
                             ),
                           ],
